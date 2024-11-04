@@ -23,7 +23,7 @@ options = ["Blue","Red","Green","Yellow"]
 color, _ = pick(options, title, multiselect=False, min_selection_count=1)
 
 
-address = ("192.168.28.131", 8001)
+address = ("192.168.1.12", 8001)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Oppretter en socket med samme argumenter
 client.connect(address) # Connecter client til server på samme port
@@ -42,11 +42,13 @@ def receive(): # En av to metoder som henter inn melding fra server
             client.close()
             break
 
-def write():
+def write(): # En av to metoder som sender melding til server
     while True:
-        message = f'{format(nickname + ':', color)} {input("")}'
+        text = input("")
         print(ERASE_LINE_ABOVE, end='')
-        client.send(message.encode('utf-8'))
+        if text:
+            message = f'{format(nickname + ':', color)} {text}'
+            client.send(message.encode('utf-8'))
 
 # Kjører både receive-thread og write-thread:
 receive_thread = threading.Thread(target=receive)
