@@ -23,7 +23,7 @@ options = ["Blue","Red","Green","Yellow"]
 color, _ = pick(options, title, multiselect=False, min_selection_count=1)
 
 
-address = ("192.168.1.12", 8000)
+address = ("192.168.1.12", 8001)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Oppretter en socket med samme argumenter
 client.connect(address) # Connecter client til server på samme port

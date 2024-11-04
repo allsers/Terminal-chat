@@ -1,7 +1,7 @@
 import socket, threading
 from colorama import Fore, Back, Style
 
-server_address = ('0.0.0.0', 8000)
+server_address = ('0.0.0.0', 8001)
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Internett-socket, TCP-protokoll
 server.bind(server_address) 
@@ -23,7 +23,7 @@ def handle(client): # Håndterer client-connection, henter inn melding prosserer
         except: # Hvis det ikke funker, kutt connection fra clienten, terminater loopen
             index = clients.index(client) # Får ut indeksen til client
             clients.remove(client) # Fjerner client fra lista
-            client.close() # Lukker     connection
+            client.close() # Lukker connection
             nickname = nicknames[index] # Henter ut nickname
             nicknames.remove(nickname) # Fjerner nickname fra oversikten
 
