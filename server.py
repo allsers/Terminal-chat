@@ -1,7 +1,7 @@
 import socket, threading
 from colorama import Fore, Back, Style
 
-server_address = ('0.0.0.0', 8001)
+server_address = ('0.0.0.0', 8000)
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Internett-socket, TCP-protokoll
 server.bind(server_address) 
