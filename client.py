@@ -3,16 +3,13 @@ from colorama import Fore, Back, Style
 from pick import pick
 
 def format(text: str, color: str) -> str:
-    if color == "Blue":
-        color = Fore.BLUE 
-    elif color == "Red":
-        color = Fore.RED
-    elif color == "Green":
-        color = Fore.GREEN
-    elif color == "Yellow":
-        color = Fore.YELLOW
-
-    return color + text + Style.RESET_ALL
+    colors = {
+        "Blue": Fore.BLUE,
+        "Red": Fore.RED,
+        "Green": Fore.GREEN,
+        "Yellow": Fore.YELLOW
+    }
+    return colors.get(color, "") + text + Style.RESET_ALL
 
 ERASE_LINE_ABOVE = "\033[1A\033[2K"
 
@@ -23,7 +20,7 @@ options = ["Blue","Red","Green","Yellow"]
 color, _ = pick(options, title, multiselect=False, min_selection_count=1)
 
 
-address = ("192.168.1.12", 8001)
+address = ("10.58.176.106", 8001)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # Oppretter en socket med samme argumenter
 client.connect(address) # Connecter client til server på samme port
